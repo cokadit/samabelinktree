@@ -1,0 +1,477 @@
+/* ============================================================
+   Samabe Bali Suites & Villas — Link tree
+   Pixel-spec from Figma (Samabe Website Redesign 2025)
+   Colours:  Primary Brown #816f5c · Beige #f1f0e7
+             Dark choco #2f2718 · White #faf8f5 · Border #c9bdb5
+   Type:     Helvetica, 14.08px / -0.0281em tracking
+   ============================================================ */
+
+:root {
+  --brown:  #816f5c;
+  --beige:  #f1f0e7;
+  --choco:  #2f2718;
+  --cream:  #faf8f5;
+  --line:   #c9bdb5;
+
+  --page-bg:     #faf8f5;               /* page base (White token)        */
+  --card-bg:     #f1f0e7;               /* card surface (Beige token)     */
+  --card-border: rgba(129, 111, 92, 0.3);
+  --card-radius: 16px;
+
+  --col-width: 480px;   /* card frame width  */
+  --gutter:    21px;    /* card inner padding */
+  --gap:       16px;    /* gap between links */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  background: var(--page-bg);
+  color: var(--choco);
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 64px 16px 320px;
+}
+
+/* ---------- Full-page background layers ---------- */
+/* Swastika pattern band across the whole top of the page */
+.bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 340px;
+  z-index: 0;
+  pointer-events: none;
+  background: url('assets/pattern.png') repeat-x top center;
+  background-size: auto 340px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
+          mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
+}
+
+/* Resort photo across the whole bottom of the page */
+.bg-photo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 46vh;
+  min-height: 360px;
+  max-height: 560px;
+  z-index: 0;
+  pointer-events: none;
+  background: url('assets/hero-bottom.jpg') no-repeat center bottom;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+}
+
+/* On desktop, show the resort photo fully (its native 1440×854 ratio,
+   uncropped) as a full-bleed band at the bottom. The page grows to make
+   room so the whole image sits below the card. */
+@media (min-width: 768px) {
+  body { padding-bottom: 62vw; }
+
+  .bg-photo {
+    height: auto;
+    aspect-ratio: 1440 / 854;   /* full image, no cropping */
+    min-height: 0;
+    max-height: none;
+    background-position: center bottom;
+    background-size: cover;     /* ratio matches → whole image shown */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+  }
+}
+
+/* Soft radial light (the figma ellipse) */
+.bg-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 56% at 50% 5%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0) 55%);
+}
+
+/* ---------- The card ---------- */
+.page-column {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--col-width);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 41px var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 30px 70px -36px rgba(47, 39, 24, 0.35);
+}
+
+/* ---------- Logo ---------- */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 106px;
+}
+.logo-img {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Links list ---------- */
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+/* ---------- Image cards ---------- */
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 440 / 250;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f0f0eb;
+  overflow: hidden;
+  text-decoration: none;
+  isolation: isolate;
+  box-shadow: 0 1px 2px rgba(47, 39, 24, 0.06);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  will-change: transform;
+}
+.card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.001);
+  transition: transform 0.9s var(--ease);
+}
+.card-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top,
+    rgba(20, 16, 8, 0.62) 0%,
+    rgba(20, 16, 8, 0.28) 26%,
+    rgba(20, 16, 8, 0) 48%);
+}
+/* icon + title row, anchored bottom-left */
+.card-head {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  transition: transform 0.5s var(--ease);
+}
+.card-ico {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+.card-ico-lg { width: 20px; height: 20px; }
+.card-ico svg { display: block; }
+.card-title {
+  font-size: 14.08px;
+  line-height: 16.192px;
+  letter-spacing: -0.2816px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* two-column row (Beach Cabana / Galangal Spa) */
+.card-row {
+  width: 100%;
+  display: flex;
+  gap: var(--gap);
+  align-items: stretch;
+}
+.card-sm {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: auto;   /* fixed height instead of ratio */
+  height: 250px;
+}
+
+/* ---------- Pills ---------- */
+.pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 69px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--cream);
+  text-decoration: none;
+  color: var(--choco);
+  box-shadow: 0 1px 2px rgba(47, 39, 24, 0.04);
+  transition: transform 0.4s var(--ease),
+              box-shadow 0.4s var(--ease),
+              border-color 0.4s var(--ease);
+  will-change: transform;
+}
+.pill-ico {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--beige);
+  color: var(--choco);
+  opacity: 0.8;
+  transition: background 0.4s var(--ease),
+              color 0.4s var(--ease),
+              opacity 0.4s var(--ease);
+}
+.pill-label {
+  flex: 1 1 auto;
+  font-size: 14.08px;
+  line-height: 16.192px;
+  letter-spacing: -0.2816px;
+  color: var(--choco);
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  display: block;
+  height: 1px;
+  margin-top: 1px;
+  background: var(--line);
+  opacity: 0.7;
+}
+
+/* ---------- Social ---------- */
+.social {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.social-label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16.192px;
+  letter-spacing: -0.2816px;
+  color: var(--brown);
+}
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.social-ico {
+  color: var(--brown);
+  opacity: 0.7;
+  line-height: 0;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+/* ============================================================
+   Motion — smooth, seamless
+   ============================================================ */
+
+/* hover: image cards lift + slow zoom */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px -18px rgba(47, 39, 24, 0.45);
+  }
+  .card:hover .card-media { transform: scale(1.07); }
+  .card:hover .card-head  { transform: translateY(-2px); }
+
+  .pill:hover {
+    transform: translateY(-3px);
+    border-color: var(--brown);
+    box-shadow: 0 12px 26px -16px rgba(47, 39, 24, 0.4);
+  }
+  .pill:hover .pill-ico {
+    opacity: 1;
+    background: var(--brown);
+    color: var(--cream);
+  }
+
+  .social-ico:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.card:active { transform: translateY(-2px) scale(0.997); }
+.pill:active { transform: translateY(-1px) scale(0.995); }
+
+/* scroll-reveal entrance */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .card, .card-media, .pill, .pill-ico, .card-text, .social-ico {
+    transition: none !important;
+  }
+}
+
+/* ---------- Very small screens only ---------- */
+@media (max-width: 340px) {
+  .card-title, .pill-label { font-size: 13px; }
+}
+
+/* ============================================================
+   Restaurant & Bar — in-card slide-in panel
+   The panel is clipped to the card's own bounding box and
+   slides in from the card's right edge. The logo header above
+   the stage stays completely static.
+   ============================================================ */
+
+/* Stage clips the sliding panel to the card box (below the logo) */
+.card-stage {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Default (main) view — defines the stage height */
+.stage-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Fading panel — absolutely covers the stage, clipped to the card */
+.stage-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0s linear 0.3s;
+  will-change: opacity;
+}
+.stage-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-out, visibility 0s linear 0s;
+}
+
+/* Static panel header (back + title) — never scrolls */
+.rb-head {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  margin-bottom: 28px;
+}
+
+/* Scrollable panel body (scrollbar hidden) */
+.rb-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* old Edge/IE */
+}
+.rb-scroll::-webkit-scrollbar { /* Chrome, Safari */
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.overlay-title {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.2816px;
+  color: var(--brown);
+}
+.overlay-back {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: -6px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--brown);
+  cursor: pointer;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.overlay-back:hover { background: rgba(129, 111, 92, 0.12); }
+.overlay-back:active { transform: translateY(-50%) scale(0.92); }
+.overlay-back svg { display: block; }
+.overlay-back:focus-visible {
+  outline: 2px solid var(--brown);
+  outline-offset: 2px;
+}
+
+/* superscript in "Rempah² Restaurant" */
+.card-sup {
+  font-size: 0.645em;     /* 9.08px on a 14.08px title */
+  vertical-align: super;
+  line-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-panel { transition: visibility 0s linear 0s; }
+  .stage-panel.is-open { transition: visibility 0s linear 0s; }
+}
