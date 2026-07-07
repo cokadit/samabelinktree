@@ -7,26 +7,35 @@
    ============================================================ */
 
 :root {
-  --brown:  #816f5c;
-  --beige:  #f1f0e7;
-  --choco:  #2f2718;
-  --cream:  #faf8f5;
-  --line:   #c9bdb5;
+  --brown: #816f5c;
+  --beige: #f1f0e7;
+  --choco: #2f2718;
+  --cream: #faf8f5;
+  --line: #c9bdb5;
 
-  --page-bg:     #faf8f5;               /* page base (White token)        */
-  --card-bg:     #f1f0e7;               /* card surface (Beige token)     */
+  --page-bg: #faf8f5;
+  /* page base (White token)        */
+  --card-bg: #f1f0e7;
+  /* card surface (Beige token)     */
   --card-border: rgba(129, 111, 92, 0.3);
   --card-radius: 16px;
 
-  --col-width: 480px;   /* card frame width  */
-  --gutter:    21px;    /* card inner padding */
-  --gap:       16px;    /* gap between links */
+  --col-width: 480px;
+  /* card frame width  */
+  --gutter: 21px;
+  /* card inner padding */
+  --gap: 16px;
+  /* gap between links */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
@@ -54,7 +63,7 @@ body {
   background: url('assets/pattern.png') repeat-x top center;
   background-size: auto 340px;
   -webkit-mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
-          mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
 }
 
 /* Resort photo across the whole bottom of the page */
@@ -71,24 +80,28 @@ body {
   background: url('assets/hero-bottom.jpg') no-repeat center bottom;
   background-size: cover;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
-          mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
 }
 
 /* On desktop, show the resort photo fully (its native 1440×854 ratio,
    uncropped) as a full-bleed band at the bottom. The page grows to make
    room so the whole image sits below the card. */
 @media (min-width: 768px) {
-  body { padding-bottom: 62vw; }
+  body {
+    padding-bottom: 62vw;
+  }
 
   .bg-photo {
     height: auto;
-    aspect-ratio: 1440 / 854;   /* full image, no cropping */
+    aspect-ratio: 1440 / 854;
+    /* full image, no cropping */
     min-height: 0;
     max-height: none;
     background-position: center bottom;
-    background-size: cover;     /* ratio matches → whole image shown */
+    background-size: cover;
+    /* ratio matches → whole image shown */
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
-            mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
   }
 }
 
@@ -129,6 +142,7 @@ body {
   width: 100%;
   height: 106px;
 }
+
 .logo-img {
   width: 150px;
   height: auto;
@@ -159,6 +173,7 @@ body {
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
   will-change: transform;
 }
+
 .card-media {
   position: absolute;
   inset: 0;
@@ -169,15 +184,17 @@ body {
   transform: scale(1.001);
   transition: transform 0.9s var(--ease);
 }
+
 .card-shade {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(to top,
-    rgba(20, 16, 8, 0.62) 0%,
-    rgba(20, 16, 8, 0.28) 26%,
-    rgba(20, 16, 8, 0) 48%);
+      rgba(20, 16, 8, 0.62) 0%,
+      rgba(20, 16, 8, 0.28) 26%,
+      rgba(20, 16, 8, 0) 48%);
 }
+
 /* icon + title row, anchored bottom-left */
 .card-head {
   position: absolute;
@@ -191,6 +208,7 @@ body {
   color: #fff;
   transition: transform 0.5s var(--ease);
 }
+
 .card-ico {
   flex: 0 0 auto;
   display: flex;
@@ -199,8 +217,16 @@ body {
   width: 16px;
   height: 16px;
 }
-.card-ico-lg { width: 20px; height: 20px; }
-.card-ico svg { display: block; }
+
+.card-ico-lg {
+  width: 20px;
+  height: 20px;
+}
+
+.card-ico svg {
+  display: block;
+}
+
 .card-title {
   font-size: 14.08px;
   line-height: 16.192px;
@@ -216,10 +242,12 @@ body {
   gap: var(--gap);
   align-items: stretch;
 }
+
 .card-sm {
   flex: 1 1 0;
   min-width: 0;
-  aspect-ratio: auto;   /* fixed height instead of ratio */
+  aspect-ratio: auto;
+  /* fixed height instead of ratio */
   height: 250px;
 }
 
@@ -238,10 +266,11 @@ body {
   color: var(--choco);
   box-shadow: 0 1px 2px rgba(47, 39, 24, 0.04);
   transition: transform 0.4s var(--ease),
-              box-shadow 0.4s var(--ease),
-              border-color 0.4s var(--ease);
+    box-shadow 0.4s var(--ease),
+    border-color 0.4s var(--ease);
   will-change: transform;
 }
+
 .pill-ico {
   flex: 0 0 auto;
   display: flex;
@@ -255,9 +284,10 @@ body {
   color: var(--choco);
   opacity: 0.8;
   transition: background 0.4s var(--ease),
-              color 0.4s var(--ease),
-              opacity 0.4s var(--ease);
+    color 0.4s var(--ease),
+    opacity 0.4s var(--ease);
 }
+
 .pill-label {
   flex: 1 1 auto;
   font-size: 14.08px;
@@ -283,6 +313,7 @@ body {
   align-items: center;
   gap: 24px;
 }
+
 .social-label {
   margin: 0;
   font-size: 12px;
@@ -290,11 +321,13 @@ body {
   letter-spacing: -0.2816px;
   color: var(--brown);
 }
+
 .social-row {
   display: flex;
   align-items: center;
   gap: 32px;
 }
+
 .social-ico {
   color: var(--brown);
   opacity: 0.7;
@@ -312,14 +345,21 @@ body {
     transform: translateY(-6px);
     box-shadow: 0 18px 40px -18px rgba(47, 39, 24, 0.45);
   }
-  .card:hover .card-media { transform: scale(1.07); }
-  .card:hover .card-head  { transform: translateY(-2px); }
+
+  .card:hover .card-media {
+    transform: scale(1.07);
+  }
+
+  .card:hover .card-head {
+    transform: translateY(-2px);
+  }
 
   .pill:hover {
     transform: translateY(-3px);
     border-color: var(--brown);
     box-shadow: 0 12px 26px -16px rgba(47, 39, 24, 0.4);
   }
+
   .pill:hover .pill-ico {
     opacity: 1;
     background: var(--brown);
@@ -332,14 +372,20 @@ body {
   }
 }
 
-.card:active { transform: translateY(-2px) scale(0.997); }
-.pill:active { transform: translateY(-1px) scale(0.995); }
+.card:active {
+  transform: translateY(-2px) scale(0.997);
+}
+
+.pill:active {
+  transform: translateY(-1px) scale(0.995);
+}
 
 /* scroll-reveal entrance */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
 }
+
 .reveal.is-in {
   opacity: 1;
   transform: translateY(0);
@@ -347,15 +393,28 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1 !important; transform: none !important; }
-  .card, .card-media, .pill, .pill-ico, .card-text, .social-ico {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card,
+  .card-media,
+  .pill,
+  .pill-ico,
+  .card-text,
+  .social-ico {
     transition: none !important;
   }
 }
 
 /* ---------- Very small screens only ---------- */
 @media (max-width: 340px) {
-  .card-title, .pill-label { font-size: 13px; }
+
+  .card-title,
+  .pill-label {
+    font-size: 13px;
+  }
 }
 
 /* ============================================================
@@ -393,6 +452,7 @@ body {
   transition: opacity 0.3s ease-out, visibility 0s linear 0.3s;
   will-change: opacity;
 }
+
 .stage-panel.is-open {
   opacity: 1;
   visibility: visible;
@@ -419,10 +479,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* old Edge/IE */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* old Edge/IE */
 }
-.rb-scroll::-webkit-scrollbar { /* Chrome, Safari */
+
+.rb-scroll::-webkit-scrollbar {
+  /* Chrome, Safari */
   width: 0;
   height: 0;
   display: none;
@@ -430,13 +494,14 @@ body {
 
 .overlay-title {
   margin: 0;
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: "Domine", serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.2816px;
   color: var(--brown);
 }
+
 .overlay-back {
   position: absolute;
   left: 0;
@@ -456,9 +521,19 @@ body {
   cursor: pointer;
   transition: background 0.25s var(--ease), transform 0.25s var(--ease);
 }
-.overlay-back:hover { background: rgba(129, 111, 92, 0.12); }
-.overlay-back:active { transform: translateY(-50%) scale(0.92); }
-.overlay-back svg { display: block; }
+
+.overlay-back:hover {
+  background: rgba(129, 111, 92, 0.12);
+}
+
+.overlay-back:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+.overlay-back svg {
+  display: block;
+}
+
 .overlay-back:focus-visible {
   outline: 2px solid var(--brown);
   outline-offset: 2px;
@@ -466,12 +541,18 @@ body {
 
 /* superscript in "Rempah² Restaurant" */
 .card-sup {
-  font-size: 0.645em;     /* 9.08px on a 14.08px title */
+  font-size: 0.645em;
+  /* 9.08px on a 14.08px title */
   vertical-align: super;
   line-height: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage-panel { transition: visibility 0s linear 0s; }
-  .stage-panel.is-open { transition: visibility 0s linear 0s; }
+  .stage-panel {
+    transition: visibility 0s linear 0s;
+  }
+
+  .stage-panel.is-open {
+    transition: visibility 0s linear 0s;
+  }
 }
