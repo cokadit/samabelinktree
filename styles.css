@@ -33,6 +33,10 @@
   box-sizing: border-box;
 }
 
+a {
+  cursor: pointer;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
 }
@@ -200,13 +204,22 @@ body {
   position: absolute;
   left: 16px;
   right: 16px;
-  bottom: 16px;
+  top: 16px;
   z-index: 2;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex: 1 0 0;
   gap: 6px;
   color: #fff;
   transition: transform 0.5s var(--ease);
+}
+
+.card-head-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 0 0;
 }
 
 .card-ico {
@@ -228,11 +241,22 @@ body {
 }
 
 .card-title {
-  font-size: 14.08px;
-  line-height: 16.192px;
-  letter-spacing: -0.2816px;
+  font-size: 16px;
+  line-height: 18.192px;
   color: #fff;
   white-space: nowrap;
+}
+
+.card-button {
+  display: flex;
+  font-size: 12px;
+  width: 105px;
+  height: 39px;
+  padding: 0 12px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  background: #816F5C;
 }
 
 /* two-column row (Beach Cabana / Galangal Spa) */
@@ -290,7 +314,7 @@ body {
 
 .pill-label {
   flex: 1 1 auto;
-  font-size: 14.08px;
+  font-size: 16px;
   line-height: 16.192px;
   letter-spacing: -0.2816px;
   color: var(--choco);
