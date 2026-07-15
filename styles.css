@@ -11,20 +11,23 @@
   --beige: #f1f0e7;
   --choco: #2f2718;
   --cream: #faf8f5;
-  --line: #c9bdb5;
+  --line: #ded7d2;
+  /* link border (Figma)            */
+  --icon: #998a7b;
+  /* muted-brown icon colour        */
 
   --page-bg: #faf8f5;
   /* page base (White token)        */
   --card-bg: #f1f0e7;
   /* card surface (Beige token)     */
-  --card-border: rgba(129, 111, 92, 0.3);
-  --card-radius: 16px;
+  --card-border: rgba(129, 111, 92, 0.1);
+  --card-radius: 0px;
 
   --col-width: 480px;
   /* card frame width  */
   --gutter: 21px;
   /* card inner padding */
-  --gap: 16px;
+  --gap: 12px;
   /* gap between links */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -51,74 +54,29 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 64px 16px 320px;
+  padding: 40px 16px;
 }
 
 /* ---------- Full-page background layers ---------- */
-/* Swastika pattern band across the whole top of the page */
-.bg-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 340px;
-  z-index: 0;
-  pointer-events: none;
-  background: url('assets/pattern.png') repeat-x top center;
-  background-size: auto 340px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
-  mask-image: linear-gradient(to bottom, #000 18%, transparent 96%);
-}
-
-/* Resort photo across the whole bottom of the page */
+/* Resort aerial photo covering the whole viewport (Figma) */
 .bg-photo {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 46vh;
-  min-height: 360px;
-  max-height: 560px;
-  z-index: 0;
-  pointer-events: none;
-  background: url('assets/hero-bottom.jpg') no-repeat center bottom;
-  background-size: cover;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
-}
-
-/* On desktop, show the resort photo fully (its native 1440×854 ratio,
-   uncropped) as a full-bleed band at the bottom. The page grows to make
-   room so the whole image sits below the card. */
-@media (min-width: 768px) {
-  body {
-    padding-bottom: 62vw;
-  }
-
-  .bg-photo {
-    height: auto;
-    aspect-ratio: 1440 / 854;
-    /* full image, no cropping */
-    min-height: 0;
-    max-height: none;
-    background-position: center bottom;
-    background-size: cover;
-    /* ratio matches → whole image shown */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
-  }
-}
-
-/* Soft radial light (the figma ellipse) */
-.bg-glow {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(120% 56% at 50% 5%,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0) 55%);
+  background: url('assets/bg-resort.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+/* Subtle darkening toward the bottom (Figma gradient overlay) */
+.bg-shade {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 45%,
+      rgba(0, 0, 0, 0.22) 100%);
 }
 
 /* ---------- The card ---------- */
@@ -127,6 +85,7 @@ body {
   z-index: 2;
   width: 100%;
   max-width: var(--col-width);
+  margin: auto 0;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--card-radius);
@@ -135,7 +94,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  box-shadow: 0 30px 70px -36px rgba(47, 39, 24, 0.35);
+  box-shadow: 0 24px 60px -32px rgba(47, 39, 24, 0.45);
 }
 
 /* ---------- Logo ---------- */
@@ -166,15 +125,15 @@ body {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 440 / 250;
+  height: 250px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   background: #f0f0eb;
   overflow: hidden;
   text-decoration: none;
   isolation: isolate;
-  box-shadow: 0 1px 2px rgba(47, 39, 24, 0.06);
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  /* box-shadow: 0 1px 2px rgba(47, 39, 24, 0.06); */
+  /* transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease); */
   will-change: transform;
 }
 
@@ -253,10 +212,13 @@ body {
   width: 105px;
   height: 39px;
   padding: 0 12px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border-radius: 4px;
-  background: #816F5C;
+  border-radius: 0;
+  color: var(--cream);
+  text-decoration: none;
+  background: var(--brown);
+  transition: background 0.35s var(--ease);
 }
 
 /* two-column row (Beach Cabana / Galangal Spa) */
@@ -281,14 +243,13 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 69px;
+  min-height: 65px;
   padding: 17px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--cream);
   text-decoration: none;
   color: var(--choco);
-  box-shadow: 0 1px 2px rgba(47, 39, 24, 0.04);
   transition: transform 0.4s var(--ease),
     box-shadow 0.4s var(--ease),
     border-color 0.4s var(--ease);
@@ -302,14 +263,13 @@ body {
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--beige);
-  color: var(--choco);
+  color: var(--icon);
   opacity: 0.8;
-  transition: background 0.4s var(--ease),
-    color 0.4s var(--ease),
-    opacity 0.4s var(--ease);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.pill-ico svg {
+  display: block;
 }
 
 .pill-label {
@@ -340,7 +300,7 @@ body {
 
 .social-label {
   margin: 0;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 16.192px;
   letter-spacing: -0.2816px;
   color: var(--brown);
@@ -353,10 +313,17 @@ body {
 }
 
 .social-ico {
+  display: inline-flex;
   color: var(--brown);
   opacity: 0.7;
   line-height: 0;
   transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.social-ico svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 
 /* ============================================================
@@ -367,7 +334,8 @@ body {
 @media (hover: hover) {
   .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 18px 40px -18px rgba(47, 39, 24, 0.45);
+    /* box-shadow: 0 18px 40px -18px rgba(47, 39, 24, 0.45); */
+    transition: all 0.5s ease-in-out;
   }
 
   .card:hover .card-media {
@@ -379,15 +347,15 @@ body {
   }
 
   .pill:hover {
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); */
     border-color: var(--brown);
-    box-shadow: 0 12px 26px -16px rgba(47, 39, 24, 0.4);
+    transition: all 0.5s ease-in-out;
+    /* box-shadow: 0 12px 26px -16px rgba(47, 39, 24, 0.4); */
   }
 
   .pill:hover .pill-ico {
     opacity: 1;
-    background: var(--brown);
-    color: var(--cream);
+    transform: scale(1.06);
   }
 
   .social-ico:hover {
@@ -413,7 +381,7 @@ body {
 .reveal.is-in {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition: all 0.7s var(--ease);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -518,7 +486,7 @@ body {
 
 .overlay-title {
   margin: 0;
-  font-family: "Domine", serif;
+  font-family: "Baskervville", Georgia, serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1;
