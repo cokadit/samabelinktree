@@ -41,7 +41,8 @@
 /* Garden / lily-pond photo anchored to the bottom, its sky edge
    masked so it dissolves into the cream page toward the pattern. */
 .bg-photo {
-  position: fixed;
+  padding-top: 30vh;
+  position: absolute;
   aspect-ratio: 1440 / 900;
   width: 100%;
   inset: auto 0 0 0;
@@ -55,6 +56,25 @@
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 35%);
 
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 30vw;
+  }
+
+  .bg-photo {
+    height: auto;
+    aspect-ratio: 1440 / 854;
+    /* full image, no cropping */
+    min-height: 0;
+    max-height: none;
+    background-position: center bottom;
+    background-size: cover;
+    /* ratio matches → whole image shown */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 10%);
+  }
 }
 
 .pill-ico-2 {
