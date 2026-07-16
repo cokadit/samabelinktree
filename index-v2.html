@@ -32,13 +32,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-v2.css" />
 </head>
 
 <body class="font-sans text-choco antialiased">
 
   <!-- Full-page background layers (sit behind the card) -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <div class="bg-dots" aria-hidden="true"></div>
   <div class="bg-photo" aria-hidden="true"></div>
-  <div class="bg-shade" aria-hidden="true"></div>
 
   <main class="page-column">
 
@@ -59,7 +61,7 @@
           <!-- Restaurant & Bar — pill (opens overlay) -->
           <a href="#" class="pill reveal" data-reveal id="open-restaurant" role="button" aria-haspopup="dialog"
             aria-controls="rb-overlay">
-            <span class="pill-ico">
+            <span class="pill-ico-2">
               <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path
@@ -75,7 +77,7 @@
 
           <!-- Resort Activities — pill -->
           <a href="https://linktr.ee/activitiesatsamabe" class="pill reveal" data-reveal>
-            <span class="pill-ico">
+            <span class="pill-ico-2">
               <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -89,7 +91,7 @@
           <!-- Galangal Spa — pill -->
           <a href="https://drive.google.com/file/d/1dDJ3KobXRlTEgHtbGuG9rpXn4IUb1dK_/view" class="pill reveal"
             data-reveal>
-            <span class="pill-ico">
+            <span class="pill-ico-2">
               <svg width="20" height="20" viewBox="0 0 14.4037 10.458" fill="none" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path
@@ -106,7 +108,7 @@
           <!-- Stay Privilege — pill -->
           <a href="https://drive.google.com/file/d/16OZymCsEsu8W_yhKypFTJRp4q1ReoCgL/view?usp=sharing"
             class="pill reveal" data-reveal>
-            <span class="pill-ico">
+            <span class="pill-ico-2">
               <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path
@@ -120,7 +122,7 @@
           <!-- Resort Map — pill -->
           <a href="https://drive.google.com/file/d/1JsMzVNd8MlQFaOtLJs1QjX82r3Z04AnS/view" class="pill reveal"
             data-reveal>
-            <span class="pill-ico">
+            <span class="pill-ico-2">
               <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path
@@ -159,22 +161,29 @@
         <footer class="social reveal" data-reveal>
           <p class="social-label">Our Social Media</p>
           <div class="social-row">
-            <a href="#" class="social-ico" aria-label="Facebook">
+            <a href="https://www.facebook.com/samabesuitesandvillas" class="social-ico" aria-label="Facebook">
               <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                 <path fill="currentColor"
                   d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95Z" />
               </svg>
             </a>
-            <a href="#" class="social-ico" aria-label="Instagram">
+            <a href="https://www.instagram.com/samaberesort/" class="social-ico" aria-label="Instagram">
               <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                 <path fill="currentColor"
                   d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z" />
               </svg>
             </a>
-            <a href="#" class="social-ico" aria-label="YouTube">
+            <a href="https://www.youtube.com/SamabeBali" class="social-ico" aria-label="YouTube">
               <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                 <path fill="currentColor"
                   d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73Z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/SamabeBali" class="social-ico" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M16.5999 5.82C15.9165 5.03953 15.5398 4.0374 15.5399 3H12.4499V15.4C12.4266 16.0712 12.1434 16.7071 11.6602 17.1735C11.177 17.6399 10.5315 17.9004 9.85991 17.9C8.43991 17.9 7.25991 16.74 7.25991 15.3C7.25991 13.58 8.91991 12.29 10.6299 12.82V9.66C7.17991 9.2 4.15991 11.88 4.15991 15.3C4.15991 18.63 6.91991 21 9.84991 21C12.9899 21 15.5399 18.45 15.5399 15.3V9.01C16.7929 9.90985 18.2973 10.3926 19.8399 10.39V7.3C19.8399 7.3 17.9599 7.39 16.5999 5.82Z"
+                  fill="black" />
               </svg>
             </a>
           </div>
@@ -204,7 +213,7 @@
 
             <!-- In-Room Dining -->
             <a href="https://linktr.ee/inroomdiningsamabe" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M1.33337 14V13.3333H2.66671V8.35264C2.66671 8.09175 2.79093 7.82886 3.03937 7.56397C3.28737 7.29908 3.62604 7.07264 4.05537 6.88464C4.41093 6.7233 4.80137 6.59753 5.22671 6.5073C5.65248 6.41708 6.07248 6.37197 6.48671 6.37197C6.89915 6.37197 7.32426 6.41975 7.76204 6.5153C8.20026 6.6113 8.60093 6.74553 8.96404 6.91797C9.37693 7.11442 9.70204 7.33819 9.93937 7.5893C10.1763 7.83997 10.2947 8.09442 10.2947 8.35264V9.23064H9.62804V8.31397C9.59737 8.21664 9.49382 8.09664 9.31737 7.95397C9.14093 7.81175 8.93471 7.68086 8.69871 7.5613C8.36804 7.39419 8.01204 7.2653 7.63071 7.17464C7.24982 7.08397 6.8676 7.03864 6.48404 7.03864C6.10048 7.03864 5.71715 7.08397 5.33404 7.17464C4.95093 7.2653 4.59382 7.39419 4.26271 7.5613C4.01826 7.6813 3.81004 7.81308 3.63804 7.95664C3.4656 8.10019 3.36404 8.22486 3.33337 8.33064V13.3333H9.79471C9.7236 13.2573 9.66626 13.1733 9.62271 13.0813C9.57826 12.9893 9.54204 12.8924 9.51404 12.7906L9.01271 10.8206H14.5774L14.0887 12.7906C14.0603 12.8929 14.022 12.9897 13.974 13.0813C13.9256 13.1733 13.8658 13.2573 13.7947 13.3333H14.6667V14H1.33337ZM11.0667 13.3333H12.536C12.7516 13.3333 12.9438 13.2675 13.1127 13.136C13.282 13.0044 13.392 12.8351 13.4427 12.628L13.7227 11.4873H9.86671L10.16 12.628C10.2107 12.8351 10.3207 13.0044 10.49 13.136C10.6589 13.2675 10.8512 13.3333 11.0667 13.3333ZM6.48071 5.19264C6.04071 5.19264 5.66471 5.03664 5.35271 4.72464C5.04071 4.41353 4.88471 4.0353 4.88471 3.58997C4.88471 3.15397 5.04048 2.77775 5.35204 2.4613C5.6636 2.1453 6.04204 1.9873 6.48737 1.9873C6.92293 1.9873 7.29893 2.1453 7.61537 2.4613C7.93182 2.7773 8.09004 3.15553 8.09004 3.59597C8.09004 4.03642 7.93182 4.41264 7.61537 4.72464C7.29893 5.03664 6.92071 5.19264 6.48071 5.19264ZM7.15404 4.25664C7.33315 4.07708 7.42271 3.85486 7.42271 3.58997C7.42271 3.33219 7.33115 3.11175 7.14804 2.92864C6.96493 2.74553 6.74271 2.65397 6.48137 2.65397C6.21915 2.65397 5.99871 2.74375 5.82004 2.9233C5.64093 3.10286 5.55137 3.32508 5.55137 3.58997C5.55137 3.85575 5.64115 4.07797 5.82071 4.25664C6.00026 4.43619 6.22248 4.52597 6.48737 4.52597C6.75226 4.52597 6.97448 4.43619 7.15404 4.25664Z"
@@ -216,7 +225,7 @@
 
             <!-- Rempah² Restaurant -->
             <a href="https://linktr.ee/rempah2restaurant" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                   <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="1.5"
@@ -228,7 +237,7 @@
 
             <!-- Crystal Blue Ocean Grill -->
             <a href="https://linktr.ee/crystalblueoceangrill" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="1.5">
@@ -244,7 +253,7 @@
 
             <!-- TeJaCo Lounge & Bar -->
             <a href="https://drive.google.com/file/d/1VaOgB5VPp138YtSimrtS0DK7-z8yeMtc/view" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg viewBox="0 0 15 15" width="16" height="16" aria-hidden="true">
                   <path fill="currentColor"
                     d="M7.5 1c-2 0-7 .25-6.5.75L7 8v4c0 1-3 .5-3 2h7c0-1.5-3-1-3-2V8l6-6.25c.5-.5-4.5-.75-6.5-.75m0 1c2.5 0 4.75.25 4.75.25L11.5 3h-8l-.75-.75S5 2 7.5 2" />
@@ -255,7 +264,7 @@
 
             <!-- Wine List -->
             <a href="https://drive.google.com/file/d/1PYU88QqqbuKQW2jLDL5ghghi9HKNY3I0/view" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                   <path fill="currentColor"
                     d="M17.568 9.432c0-2.55-.906-5.592-.944-5.72A1 1 0 0 0 15.666 3H8.334c-.441 0-.83.289-.958.712c-.038.128-.944 3.17-.944 5.72c0 2.735 1.984 5.011 4.587 5.477L11 15v4h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4l-.019-.092c2.603-.466 4.587-2.741 4.587-5.476M12 13a3.565 3.565 0 0 1-3.511-3h7.021A3.56 3.56 0 0 1 12 13M8.445 9c.062-1.468.422-3.093.653-4h5.803c.231.907.591 2.532.653 4z" />
@@ -266,7 +275,7 @@
 
             <!-- Indonesian Chef's Table at Wantilan -->
             <a href="http://drive.google.com/file/d/1k6zHLCrwXULNOeTA1DFD_k75vR83KtV-/view" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <path fill="currentColor"
                     d="M9 14h2V9H9zm-4-1.5q-1.15-.575-1.825-1.662T2.5 8.475Q2.5 6.6 3.788 5.3T6.95 4q.3 0 .613.05t.612.125Q8.8 3.15 9.8 2.575T12 2t2.2.575t1.625 1.6q.3-.075.6-.125T17.05 4q1.875 0 3.163 1.3T21.5 8.475q0 1.275-.675 2.363T19 12.5V18H5zm8 1.5h2V9h-2zm-6 2h10v-4.725l1.1-.55q.65-.325 1.025-.913T19.5 8.5q0-1.05-.712-1.775T17.05 6q-.275 0-.5.05t-.475.125L14.9 6.5l-.775-1.3q-.35-.575-.913-.888T12 4t-1.213.313t-.912.887L9.1 6.5l-1.2-.325q-.25-.05-.488-.112T6.926 6Q5.9 6 5.2 6.725T4.5 8.5q0 .725.375 1.313t1.025.912l1.1.55zm-2 2h2v2h10v-2h2v4H5zm7-2" />
@@ -277,7 +286,7 @@
 
             <!-- Pool & Beach Menu -->
             <a href="https://linktr.ee/samabepoolbeach" class="pill">
-              <span class="pill-ico">
+              <span class="pill-ico-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <g clip-path="url(#clip0_9443_4815)">
                     <path
@@ -303,7 +312,7 @@
               <span class="card-shade" aria-hidden="true"></span>
               <span class="card-head">
                 <div class="card-head-text">
-                  <span class="pill-ico">
+                  <span class="pill-ico-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none">
                       <path
                         d="M8.00004 7.2437C7.52671 6.84504 7.09582 6.48015 6.70737 6.14904C6.31893 5.81793 5.98982 5.50148 5.72004 5.1997C5.45026 4.89793 5.23915 4.60148 5.08671 4.31037C4.93426 4.01926 4.85871 3.71481 4.86004 3.39704C4.86004 2.96993 5.0116 2.60459 5.31471 2.30104C5.61826 1.99748 5.98493 1.8457 6.41471 1.8457C6.70893 1.8457 6.9876 1.91726 7.25071 2.06037C7.51382 2.20393 7.76382 2.41793 8.00071 2.70237C8.2376 2.42637 8.49182 2.21459 8.76337 2.06704C9.03493 1.91948 9.3136 1.8457 9.59937 1.8457C10.0296 1.8457 10.394 1.9997 10.6927 2.3077C10.9914 2.6157 11.1409 2.9917 11.1414 3.4357C11.1414 3.73659 11.0658 4.03037 10.9147 4.31704C10.7636 4.6037 10.5525 4.89793 10.2814 5.1997C10.0103 5.50148 9.68093 5.81793 9.29337 6.14904C8.90582 6.48015 8.47471 6.84504 8.00004 7.2437ZM8.00004 6.3537C8.8516 5.68037 9.47693 5.10881 9.87604 4.63904C10.2752 4.16926 10.4747 3.76393 10.4747 3.42304C10.4747 3.16526 10.3887 2.94926 10.2167 2.77504C10.0447 2.60081 9.83449 2.51326 9.58604 2.51237C9.35849 2.51237 9.1596 2.58548 8.98937 2.7317C8.81871 2.87793 8.6496 3.03748 8.48204 3.21037L8.00404 3.71904L7.52604 3.2177C7.35315 3.03993 7.18137 2.87793 7.01071 2.7317C6.84049 2.58548 6.6416 2.51237 6.41404 2.51237C6.16515 2.51237 5.95493 2.5977 5.78337 2.76837C5.61137 2.93904 5.52537 3.14859 5.52537 3.39704C5.52537 3.75526 5.72293 4.16704 6.11804 4.63237C6.51315 5.0977 7.14049 5.67148 8.00004 6.3537ZM2.47471 13.9997V11.7864C2.32582 11.7313 2.20182 11.645 2.10271 11.5277C2.0036 11.4108 1.94293 11.271 1.92071 11.1084L1.33337 5.7817H1.42937C1.5996 5.7817 1.7456 5.83859 1.86737 5.95237C1.98915 6.06615 2.06115 6.2037 2.08337 6.36504L2.54737 10.4104H5.28204C5.58871 10.4104 5.84493 10.513 6.05071 10.7184C6.25649 10.9237 6.35937 11.1799 6.35937 11.487V11.833H5.84604V13.9997H5.26937V11.833H3.06404V13.9997H2.47471ZM7.66671 13.9997V8.8197H3.84671C3.84671 8.63304 3.91293 8.47526 4.04537 8.34637C4.17871 8.21748 4.33449 8.15304 4.51271 8.15304H11.4874C11.666 8.15304 11.8216 8.2197 11.954 8.35304C12.0865 8.48637 12.1532 8.64193 12.154 8.8197H8.33337V13.9997H7.66671ZM10.18 13.9997V11.833H9.64071V11.4864C9.64071 11.1797 9.7436 10.9237 9.94937 10.7184C10.1552 10.513 10.4114 10.4104 10.718 10.4104H13.456L13.9334 6.36504C13.9556 6.2037 14.0269 6.06593 14.1474 5.9517C14.2678 5.83837 14.4132 5.7817 14.5834 5.7817H14.6794L14.0834 11.1084C14.0612 11.2621 14.004 11.3977 13.912 11.515C13.82 11.6324 13.704 11.7188 13.564 11.7744V13.9997H12.9747V11.833H10.756V13.9997H10.18Z"
@@ -325,19 +334,19 @@
           <footer class="social">
             <p class="social-label">Our Social Media</p>
             <div class="social-row">
-              <a href="https://www.facebook.com/samabesuitesandvillas" class="social-ico" aria-label="Facebook">
+              <a href="#" class="social-ico" aria-label="Facebook">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                   <path fill="currentColor"
                     d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95Z" />
                 </svg>
               </a>
-              <a href="https://www.instagram.com/samaberesort/" class="social-ico" aria-label="Instagram">
+              <a href="#" class="social-ico" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                   <path fill="currentColor"
                     d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z" />
                 </svg>
               </a>
-              <a href="https://www.youtube.com/SamabeBali" class="social-ico" aria-label="YouTube">
+              <a href="#" class="social-ico" aria-label="YouTube">
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                   <path fill="currentColor"
                     d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73Z" />
