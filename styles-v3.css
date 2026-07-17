@@ -17,7 +17,7 @@
   flex: 0 0 auto;
   width: 56px;
   height: 56px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   object-fit: cover;
   display: block;
   transition: transform 0.4s var(--ease);
