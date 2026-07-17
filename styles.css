@@ -64,7 +64,7 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: url('assets/bg-resort.webp') no-repeat center center;
+  background: url('assets/bg-resort-3.webp') no-repeat center center;
   background-size: cover;
 }
 
